@@ -3,7 +3,13 @@ import pandas as pd
 df = pd.read_csv("mushra_temp.csv")
 
 split_data = {exp_type: df_group for exp_type, df_group in df.groupby("exp")}
-# print(split_data)
+
+
+def modify_path(subtype, num, effect_type, param_type, base_path, experiment_type):
+    # Check if 'rir' or 'micir' is in the subtype
+    if "rir" in subtype or "micir" in subtype:
+        effect_type = "_"  # Replace 'hard' or 'moderate' with '_'
+    return f"{base_path}/{subtype}/{subtype}-{effect_type}-{num}-{param_type}"
 
 
 # afx_learning_single
@@ -36,11 +42,11 @@ afx_learning_single["tar_wet"] = afx_learning_single.apply(
     axis=1,
 )
 afx_learning_single["pred1"] = afx_learning_single.apply(
-    lambda row: f"/ssd4/doyo/infer_forward_final/train_single-eval_single/vctk1/{row['subtype']}_hard-{row['num']}-2wet_tar.wav",
+    lambda row: f"/ssd4/doyo/infer_forward_final/train_single-eval_single/vctk1/{row['subtype']}_hard-{row['num']}-3pred.wav",
     axis=1,
 )
 afx_learning_single["pred2"] = afx_learning_single.apply(
-    lambda row: f"/ssd4/doyo/infer_forward_final/train_multi-eval_single/vctk1/{row['subtype']}_hard-{row['num']}-2wet_tar.wav",
+    lambda row: f"/ssd4/doyo/infer_forward_final/train_multi-eval_single/vctk1/{row['subtype']}_hard-{row['num']}-3pred.wav",
     axis=1,
 )
 afx_learning_single["random_param"] = afx_learning_single.apply(
@@ -173,6 +179,26 @@ print(cross_domain)
 merged_df = pd.concat(
     [afx_learning_single, afx_learning_multi, recording_env, cross_domain]
 )
+
+
+def update_paths_for_rir_micir(row):
+    # If 'rir' or 'micir' is in the subtype, replace 'hard' or 'moderate' with '_'
+    if "rir" in row["subtype"] or "micir" in row["subtype"]:
+        row["ref_dry"] = row["ref_dry"].replace("hard", "_").replace("moderate", "_")
+        row["ref_wet"] = row["ref_wet"].replace("hard", "_").replace("moderate", "_")
+        row["tar_dry"] = row["tar_dry"].replace("hard", "_").replace("moderate", "_")
+        row["tar_wet"] = row["tar_wet"].replace("hard", "_").replace("moderate", "_")
+        row["pred1"] = row["pred1"].replace("hard", "_").replace("moderate", "_")
+        row["pred2"] = row["pred2"].replace("hard", "_").replace("moderate", "_")
+        row["random_param"] = (
+            row["random_param"].replace("hard", "_").replace("moderate", "_")
+        )
+    return row
+
+
+# Apply the function to the merged dataframe
+merged_df = merged_df.apply(update_paths_for_rir_micir, axis=1)
+
 
 merged_df.to_csv("mushra_merged.csv", index=False)
 print("Merged data has been saved to 'merged_data.csv'")
