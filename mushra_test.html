@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUSHRA Test Form</title>
+    <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+</head>
+<body>
+
+<!-- MUSHRA Test Form -->
+<crowd-form answer-format="flatten-objects">
+  <h2>Audio Subjective Test</h2>
+  <p>
+    <strong>Instructions:</strong> 
+    First, listen to two reference audio signals (dry and wet) to learn the AFX mapping between them. 
+    Then, listen to a dry target audio. Imagine the wet target audio with the AFX mapping applied. 
+    How much do the audio signals below resemble the desired wet target audio? 
+    Use the sliders below to rate how much the audio is close to the desired wet audio (0 = very poor, 100 = identical to wet reference).
+  </p>
+  
+  <!-- Container for dynamic questions -->
+  <div id="questions-container"></div>
+  
+  <!-- Submit the results -->
+  <p>
+    <crowd-button>Submit</crowd-button>
+  </p>
+  
+  <!-- Embed JSON Data -->
+  <script type="application/json" id="questions-data">
+  {
+  "questions": [
+    {
+      "index": 0,
+      "number": 1,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/aac/aac-hard-1-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/aac/aac-hard-1-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/aac/aac-hard-1-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_single-eval_single/vctk1/aac_hard-1-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_multi-eval_single/vctk1/aac_hard-1-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param_2/vctk1/aac/aac-moderate-1-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 1,
+      "number": 3,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/add_noise_car/add_noise_car-hard-3-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/add_noise_car/add_noise_car-hard-3-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/add_noise_car/add_noise_car-hard-3-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_single-eval_single/vctk1/add_noise_car_hard-3-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_multi-eval_single/vctk1/add_noise_car_hard-3-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param_2/vctk1/add_noise_car/add_noise_car-moderate-3-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 2,
+      "number": 5,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/bandpass/bandpass-hard-5-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/bandpass/bandpass-hard-5-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/bandpass/bandpass-hard-5-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_single-eval_single/vctk1/bandpass_hard-5-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_multi-eval_single/vctk1/bandpass_hard-5-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param_2/vctk1/bandpass/bandpass-moderate-5-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 3,
+      "number": 7,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/bandreject/bandreject-hard-7-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/bandreject/bandreject-hard-7-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/bandreject/bandreject-hard-7-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_single-eval_single/vctk1/bandreject_hard-7-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_multi-eval_single/vctk1/bandreject_hard-7-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param_2/vctk1/bandreject/bandreject-moderate-7-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 4,
+      "number": 9,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/bitcrush/bitcrush-hard-9-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/bitcrush/bitcrush-hard-9-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/bitcrush/bitcrush-hard-9-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_single-eval_single/vctk1/bitcrush_hard-9-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_multi-eval_single/vctk1/bitcrush_hard-9-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param_2/vctk1/bitcrush/bitcrush-moderate-9-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 5,
+      "number": 11,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/chorus/chorus-hard-11-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/chorus/chorus-hard-11-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/chorus/chorus-hard-11-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_single-eval_single/vctk1/chorus_hard-11-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_multi-eval_single/vctk1/chorus_hard-11-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param_2/vctk1/chorus/chorus-moderate-11-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 6,
+      "number": 13,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/compressor/compressor-hard-13-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/compressor/compressor-hard-13-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/compressor/compressor-hard-13-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_single-eval_single/vctk1/compressor_hard-13-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_multi-eval_single/vctk1/compressor_hard-13-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param_2/vctk1/compressor/compressor-moderate-13-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 7,
+      "number": 15,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/delay/delay-hard-15-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/delay/delay-hard-15-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/delay/delay-hard-15-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_single-eval_single/vctk1/delay_hard-15-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_multi-eval_single/vctk1/delay_hard-15-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param_2/vctk1/delay/delay-moderate-15-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 8,
+      "number": 17,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/distortion/distortion-hard-17-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/distortion/distortion-hard-17-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/distortion/distortion-hard-17-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_single-eval_single/vctk1/distortion_hard-17-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_multi-eval_single/vctk1/distortion_hard-17-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param_2/vctk1/distortion/distortion-moderate-17-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 9,
+      "number": 19,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/hard_clipper/hard_clipper-hard-19-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/hard_clipper/hard_clipper-hard-19-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/hard_clipper/hard_clipper-hard-19-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_single-eval_single/vctk1/hard_clipper_hard-19-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_multi-eval_single/vctk1/hard_clipper_hard-19-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param_2/vctk1/hard_clipper/hard_clipper-moderate-19-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 10,
+      "number": 21,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/highpass/highpass-hard-21-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/highpass/highpass-hard-21-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/highpass/highpass-hard-21-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_single-eval_single/vctk1/highpass_hard-21-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_multi-eval_single/vctk1/highpass_hard-21-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param_2/vctk1/highpass/highpass-moderate-21-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 11,
+      "number": 23,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/limiter/limiter-hard-23-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/limiter/limiter-hard-23-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/limiter/limiter-hard-23-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_single-eval_single/vctk1/limiter_hard-23-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_multi-eval_single/vctk1/limiter_hard-23-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param_2/vctk1/limiter/limiter-moderate-23-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 12,
+      "number": 25,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/lowpass/lowpass-hard-25-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/lowpass/lowpass-hard-25-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/lowpass/lowpass-hard-25-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_single-eval_single/vctk1/lowpass_hard-25-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_multi-eval_single/vctk1/lowpass_hard-25-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param_2/vctk1/lowpass/lowpass-moderate-25-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 13,
+      "number": 27,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/micir_conv_modern_1/micir_conv_modern_1-_-27-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/micir_conv_modern_1/micir_conv_modern_1-_-27-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/micir_conv_modern_1/micir_conv_modern_1-_-27-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_single-eval_single/vctk1/micir_conv_modern_1-27-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_multi-eval_single/vctk1/micir_conv_vintage_1-27-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param_2/vctk1/micir_conv_modern_1/micir_conv_modern_1-_-27-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 14,
+      "number": 29,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/parametric_eq/parametric_eq-hard-29-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/parametric_eq/parametric_eq-hard-29-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/parametric_eq/parametric_eq-hard-29-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_single-eval_single/vctk1/parametric_eq_hard-29-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_multi-eval_single/vctk1/parametric_eq_hard-29-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param_2/vctk1/parametric_eq/parametric_eq-moderate-29-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 15,
+      "number": 31,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/rir_conv_bathroom/rir_conv_bathroom-_-31-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/rir_conv_bathroom/rir_conv_bathroom-_-31-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param/vctk1/rir_conv_bathroom/rir_conv_bathroom-_-31-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_single-eval_single/vctk1/rir_conv_bathroom-31-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_multi-eval_single/vctk1/rir_conv_studio_1-31-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param_2/vctk1/rir_conv_bathroom/rir_conv_bathroom-_-31-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 16,
+      "number": 41,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/multi_effects/vctk1/complex_0/complex_0-_-41-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/multi_effects/vctk1/complex_0/complex_0-_-41-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/multi_effects/vctk1/complex_0/complex_0-_-41-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_single-eval_multi/vctk1/complex_0-41-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_multi-eval_multi/vctk1/complex_0-41-3pred.wav",
+        "-"
+      ]
+    },
+    {
+      "index": 17,
+      "number": 41,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/multi_effects/vctk1/complex_1/complex_1-_-41-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/multi_effects/vctk1/complex_1/complex_1-_-41-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/multi_effects/vctk1/complex_1/complex_1-_-41-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_single-eval_multi/vctk1/complex_1-41-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_multi-eval_multi/vctk1/complex_1-41-3pred.wav",
+        "-"
+      ]
+    },
+    {
+      "index": 18,
+      "number": 42,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/multi_effects/vctk1/complex_2/complex_2-_-42-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/multi_effects/vctk1/complex_2/complex_2-_-42-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/multi_effects/vctk1/complex_2/complex_2-_-42-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_single-eval_multi/vctk1/complex_2-42-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_multi-eval_multi/vctk1/complex_2-42-3pred.wav",
+        "-"
+      ]
+    },
+    {
+      "index": 19,
+      "number": 43,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/multi_effects/vctk1/complex_3/complex_3-_-43-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/multi_effects/vctk1/complex_3/complex_3-_-43-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/multi_effects/vctk1/complex_3/complex_3-_-43-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_single-eval_multi/vctk1/complex_3-43-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_multi-eval_multi/vctk1/complex_3-43-3pred.wav",
+        "-"
+      ]
+    },
+    {
+      "index": 20,
+      "number": 44,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/multi_effects/vctk1/complex_4/complex_4-_-44-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/multi_effects/vctk1/complex_4/complex_4-_-44-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/multi_effects/vctk1/complex_4/complex_4-_-44-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_single-eval_multi/vctk1/complex_4-44-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_multi-eval_multi/vctk1/complex_4-44-3pred.wav",
+        "-"
+      ]
+    },
+    {
+      "index": 21,
+      "number": 45,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/multi_effects/vctk1/monolithic_5/monolithic_5-_-45-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/multi_effects/vctk1/monolithic_5/monolithic_5-_-45-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/multi_effects/vctk1/monolithic_5/monolithic_5-_-45-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_single-eval_multi/vctk1/monolithic_5-45-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_multi-eval_multi/vctk1/monolithic_5-45-3pred.wav",
+        "-"
+      ]
+    },
+    {
+      "index": 22,
+      "number": 46,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/multi_effects/vctk1/monolithic_6/monolithic_6-_-46-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/multi_effects/vctk1/monolithic_6/monolithic_6-_-46-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/multi_effects/vctk1/monolithic_6/monolithic_6-_-46-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_single-eval_multi/vctk1/monolithic_6-46-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_multi-eval_multi/vctk1/monolithic_6-46-3pred.wav",
+        "-"
+      ]
+    },
+    {
+      "index": 23,
+      "number": 47,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/multi_effects/vctk1/monolithic_7/monolithic_7-_-47-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/multi_effects/vctk1/monolithic_7/monolithic_7-_-47-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/multi_effects/vctk1/monolithic_7/monolithic_7-_-47-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_single-eval_multi/vctk1/monolithic_7-47-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_multi-eval_multi/vctk1/monolithic_7-47-3pred.wav",
+        "-"
+      ]
+    },
+    {
+      "index": 24,
+      "number": 48,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/multi_effects/vctk1/monolithic_8/monolithic_8-_-48-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/multi_effects/vctk1/monolithic_8/monolithic_8-_-48-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/multi_effects/vctk1/monolithic_8/monolithic_8-_-48-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_single-eval_multi/vctk1/monolithic_8-48-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_multi-eval_multi/vctk1/monolithic_8-48-3pred.wav",
+        "-"
+      ]
+    },
+    {
+      "index": 25,
+      "number": 49,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/multi_effects/vctk1/monolithic_9/monolithic_9-_-49-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/multi_effects/vctk1/monolithic_9/monolithic_9-_-49-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/multi_effects/vctk1/monolithic_9/monolithic_9-_-49-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_single-eval_multi/vctk1/monolithic_9-49-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_final/train_multi-eval_multi/vctk1/monolithic_9-49-3pred.wav",
+        "-"
+      ]
+    },
+    {
+      "index": 26,
+      "number": 2,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/libopus/libopus-hard-2-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/libopus/libopus-hard-2-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/libopus/libopus-hard-2-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_exp2-rec_env/single_recording_env/vctk1/libopus_hard-2-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_exp2-rec_env/multiple_recording_env/vctk1/libopus_hard-2-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param_2/vctk1/libopus/libopus-moderate-2-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 27,
+      "number": 4,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/add_noise_clap/add_noise_clap-hard-4-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/add_noise_clap/add_noise_clap-hard-4-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/add_noise_clap/add_noise_clap-hard-4-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_exp2-rec_env/single_recording_env/vctk1/add_noise_clap_hard-4-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_exp2-rec_env/multiple_recording_env/vctk1/add_noise_clap_hard-4-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param_2/vctk1/add_noise_clap/add_noise_clap-moderate-4-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 28,
+      "number": 6,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/bandpass_ladder/bandpass_ladder-hard-6-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/bandpass_ladder/bandpass_ladder-hard-6-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/bandpass_ladder/bandpass_ladder-hard-6-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_exp2-rec_env/single_recording_env/vctk1/bandpass_ladder_hard-6-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_exp2-rec_env/multiple_recording_env/vctk1/bandpass_ladder_hard-6-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param_2/vctk1/bandpass_ladder/bandpass_ladder-moderate-6-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 29,
+      "number": 8,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/bandreject/bandreject-hard-8-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/bandreject/bandreject-hard-8-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/bandreject/bandreject-hard-8-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_exp2-rec_env/single_recording_env/vctk1/bandreject_hard-8-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_exp2-rec_env/multiple_recording_env/vctk1/bandreject_hard-8-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param_2/vctk1/bandreject/bandreject-moderate-8-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 30,
+      "number": 10,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/bitcrush/bitcrush-hard-10-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/bitcrush/bitcrush-hard-10-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/bitcrush/bitcrush-hard-10-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_exp2-rec_env/single_recording_env/vctk1/bitcrush_hard-10-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_exp2-rec_env/multiple_recording_env/vctk1/bitcrush_hard-10-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param_2/vctk1/bitcrush/bitcrush-moderate-10-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 31,
+      "number": 12,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/flanger/flanger-hard-12-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/flanger/flanger-hard-12-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/flanger/flanger-hard-12-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_exp2-rec_env/single_recording_env/vctk1/flanger_hard-12-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_exp2-rec_env/multiple_recording_env/vctk1/flanger_hard-12-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param_2/vctk1/flanger/flanger-moderate-12-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 32,
+      "number": 14,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/compressor/compressor-hard-14-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/compressor/compressor-hard-14-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/compressor/compressor-hard-14-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_exp2-rec_env/single_recording_env/vctk1/compressor_hard-14-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_exp2-rec_env/multiple_recording_env/vctk1/compressor_hard-14-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param_2/vctk1/compressor/compressor-moderate-14-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 33,
+      "number": 16,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/delay/delay-hard-16-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/delay/delay-hard-16-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/delay/delay-hard-16-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_exp2-rec_env/single_recording_env/vctk1/delay_hard-16-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_exp2-rec_env/multiple_recording_env/vctk1/delay_hard-16-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param_2/vctk1/delay/delay-moderate-16-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 34,
+      "number": 18,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/distortion/distortion-hard-18-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/distortion/distortion-hard-18-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/distortion/distortion-hard-18-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_exp2-rec_env/single_recording_env/vctk1/distortion_hard-18-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_exp2-rec_env/multiple_recording_env/vctk1/distortion_hard-18-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param_2/vctk1/distortion/distortion-moderate-18-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 35,
+      "number": 20,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/soft_clipper/soft_clipper-hard-20-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/soft_clipper/soft_clipper-hard-20-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/soft_clipper/soft_clipper-hard-20-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_exp2-rec_env/single_recording_env/vctk1/soft_clipper_hard-20-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_exp2-rec_env/multiple_recording_env/vctk1/soft_clipper_hard-20-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param_2/vctk1/soft_clipper/soft_clipper-moderate-20-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 36,
+      "number": 22,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/highpass_ladder/highpass_ladder-hard-22-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/highpass_ladder/highpass_ladder-hard-22-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/highpass_ladder/highpass_ladder-hard-22-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_exp2-rec_env/single_recording_env/vctk1/highpass_ladder_hard-22-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_exp2-rec_env/multiple_recording_env/vctk1/highpass_ladder_hard-22-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param_2/vctk1/highpass_ladder/highpass_ladder-moderate-22-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 37,
+      "number": 24,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/limiter/limiter-hard-24-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/limiter/limiter-hard-24-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/limiter/limiter-hard-24-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_exp2-rec_env/single_recording_env/vctk1/limiter_hard-24-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_exp2-rec_env/multiple_recording_env/vctk1/limiter_hard-24-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param_2/vctk1/limiter/limiter-moderate-24-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 38,
+      "number": 26,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/lowpass_ladder/lowpass_ladder-hard-26-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/lowpass_ladder/lowpass_ladder-hard-26-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/lowpass_ladder/lowpass_ladder-hard-26-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_exp2-rec_env/single_recording_env/vctk1/lowpass_ladder_hard-26-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_exp2-rec_env/multiple_recording_env/vctk1/lowpass_ladder_hard-26-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param_2/vctk1/lowpass_ladder/lowpass_ladder-moderate-26-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 39,
+      "number": 28,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/micir_conv_modern_2/micir_conv_modern_2-_-28-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/micir_conv_modern_2/micir_conv_modern_2-_-28-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/micir_conv_modern_2/micir_conv_modern_2-_-28-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_exp2-rec_env/single_recording_env/vctk1/micir_conv_modern_2-28-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_exp2-rec_env/multiple_recording_env/vctk1/micir_conv_vintage_2-28-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param_2/vctk1/micir_conv_modern_2/micir_conv_modern_2-_-28-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 40,
+      "number": 30,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/svf/svf-hard-30-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/svf/svf-hard-30-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/svf/svf-hard-30-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_exp2-rec_env/single_recording_env/vctk1/svf_hard-30-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_exp2-rec_env/multiple_recording_env/vctk1/svf_hard-30-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param_2/vctk1/svf/svf-moderate-30-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 41,
+      "number": 32,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/rir_conv_church/rir_conv_church-_-32-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/rir_conv_church/rir_conv_church-_-32-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_multi_env/vctk1/rir_conv_church/rir_conv_church-_-32-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_exp2-rec_env/single_recording_env/vctk1/rir_conv_church-32-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_exp2-rec_env/multiple_recording_env/vctk1/rir_conv_bathroom-32-3pred.wav",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/single_effects_rand_param_2/vctk1/rir_conv_church/rir_conv_church-_-32-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 42,
+      "number": 33,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/aac/aac-hard-33-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/aac/aac-hard-33-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/aac/aac-hard-33-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_cross_domain/cross_domain/maestro_single/aac_hard-33-3pred.wav",
+        "-",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single_rand_param/maestro_single/aac/aac-moderate-33-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 43,
+      "number": 34,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/add_noise_guitar/add_noise_guitar-hard-34-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/add_noise_guitar/add_noise_guitar-hard-34-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/add_noise_guitar/add_noise_guitar-hard-34-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_cross_domain/cross_domain/maestro_single/add_noise_guitar_hard-34-3pred.wav",
+        "-",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single_rand_param/maestro_single/add_noise_guitar/add_noise_guitar-moderate-34-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 44,
+      "number": 35,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/bandpass/bandpass-hard-35-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/bandpass/bandpass-hard-35-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/bandpass/bandpass-hard-35-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_cross_domain/cross_domain/maestro_single/bandpass_hard-35-3pred.wav",
+        "-",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single_rand_param/maestro_single/bandpass/bandpass-moderate-35-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 45,
+      "number": 36,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/bandreject/bandreject-hard-36-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/bandreject/bandreject-hard-36-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/bandreject/bandreject-hard-36-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_cross_domain/cross_domain/maestro_single/bandreject_hard-36-3pred.wav",
+        "-",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single_rand_param/maestro_single/bandreject/bandreject-moderate-36-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 46,
+      "number": 37,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/bitcrush/bitcrush-hard-37-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/bitcrush/bitcrush-hard-37-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/bitcrush/bitcrush-hard-37-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_cross_domain/cross_domain/maestro_single/bitcrush_hard-37-3pred.wav",
+        "-",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single_rand_param/maestro_single/bitcrush/bitcrush-moderate-37-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 47,
+      "number": 38,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/flanger/flanger-hard-38-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/flanger/flanger-hard-38-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/flanger/flanger-hard-38-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_cross_domain/cross_domain/maestro_single/flanger_hard-38-3pred.wav",
+        "-",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single_rand_param/maestro_single/flanger/flanger-moderate-38-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 48,
+      "number": 39,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/compressor/compressor-hard-39-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/compressor/compressor-hard-39-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/compressor/compressor-hard-39-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_cross_domain/cross_domain/maestro_single/compressor_hard-39-3pred.wav",
+        "-",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single_rand_param/maestro_single/compressor/compressor-moderate-39-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 49,
+      "number": 40,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/delay/delay-hard-40-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/delay/delay-hard-40-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/delay/delay-hard-40-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_cross_domain/cross_domain/maestro_single/delay_hard-40-3pred.wav",
+        "-",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single_rand_param/maestro_single/delay/delay-moderate-40-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 50,
+      "number": 41,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/distortion/distortion-hard-41-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/distortion/distortion-hard-41-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/distortion/distortion-hard-41-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_cross_domain/cross_domain/maestro_single/distortion_hard-41-3pred.wav",
+        "-",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single_rand_param/maestro_single/distortion/distortion-moderate-41-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 51,
+      "number": 42,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/hard_clipper/hard_clipper-hard-42-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/hard_clipper/hard_clipper-hard-42-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/hard_clipper/hard_clipper-hard-42-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_cross_domain/cross_domain/maestro_single/hard_clipper_hard-42-3pred.wav",
+        "-",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single_rand_param/maestro_single/hard_clipper/hard_clipper-moderate-42-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 52,
+      "number": 43,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/highpass_ladder/highpass_ladder-hard-43-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/highpass_ladder/highpass_ladder-hard-43-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/highpass_ladder/highpass_ladder-hard-43-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_cross_domain/cross_domain/maestro_single/highpass_ladder_hard-43-3pred.wav",
+        "-",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single_rand_param/maestro_single/highpass_ladder/highpass_ladder-moderate-43-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 53,
+      "number": 44,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/limiter/limiter-hard-44-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/limiter/limiter-hard-44-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/limiter/limiter-hard-44-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_cross_domain/cross_domain/maestro_single/limiter_hard-44-3pred.wav",
+        "-",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single_rand_param/maestro_single/limiter/limiter-moderate-44-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 54,
+      "number": 45,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/lowpass/lowpass-hard-45-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/lowpass/lowpass-hard-45-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/lowpass/lowpass-hard-45-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_cross_domain/cross_domain/maestro_single/lowpass_hard-45-3pred.wav",
+        "-",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single_rand_param/maestro_single/lowpass/lowpass-moderate-45-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 55,
+      "number": 46,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/micir_conv_vintage_1/micir_conv_vintage_1-_-46-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/micir_conv_vintage_1/micir_conv_vintage_1-_-46-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/micir_conv_vintage_1/micir_conv_vintage_1-_-46-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_cross_domain/cross_domain/maestro_single/micir_conv_vintage_1-46-3pred.wav",
+        "-",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single_rand_param/maestro_single/micir_conv_modern_1/micir_conv_modern_1-_-46-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 56,
+      "number": 47,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/parametric_eq/parametric_eq-hard-47-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/parametric_eq/parametric_eq-hard-47-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/parametric_eq/parametric_eq-hard-47-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_cross_domain/cross_domain/maestro_single/parametric_eq_hard-47-3pred.wav",
+        "-",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single_rand_param/maestro_single/parametric_eq/parametric_eq-moderate-47-wet_tar.wav"
+      ]
+    },
+    {
+      "index": 57,
+      "number": 48,
+      "dryReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/rir_conv_concert_hall/rir_conv_concert_hall-_-48-dry_ref.wav",
+      "wetReference": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/rir_conv_concert_hall/rir_conv_concert_hall-_-48-wet_ref.wav",
+      "dryTarget": "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single/maestro_single/rir_conv_concert_hall/rir_conv_concert_hall-_-48-dry_tar.wav",
+      "stimuli": [
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/infer_forward_cross_domain/cross_domain/maestro_single/rir_conv_concert_hall-48-3pred.wav",
+        "-",
+        "https://raw.githubusercontent.com/gillosae/blindforward_mushra/main/samples/test_set_v2/cross_domain_single_rand_param/maestro_single/rir_conv_church/rir_conv_church-_-48-wet_tar.wav"
+      ]
+    }
+  ]
+}
+  </script>
+  
+  <!-- JavaScript to Dynamically Generate Questions -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const dataElement = document.getElementById('questions-data');
+      const data = JSON.parse(dataElement.textContent);
+      const container = document.getElementById('questions-container');
+
+      data.questions.forEach(question => {
+        // Create the question div
+        const questionDiv = document.createElement('div');
+        questionDiv.classList.add('question');
+        questionDiv.style.border = '2px solid black';
+        questionDiv.style.marginBottom = '20px';
+        
+        const innerDiv = document.createElement('div');
+        innerDiv.style.padding = '20px';
+        innerDiv.style.backgroundColor = 'lightgray';
+        
+        // Question number
+        const h1 = document.createElement('h1');
+        h1.textContent = question.index;
+        innerDiv.appendChild(h1);
+
+        // Reference Audio Section
+        const refAudioDiv = document.createElement('div');
+        refAudioDiv.style.display = 'flex';
+        refAudioDiv.style.justifyContent = 'space-between';
+        refAudioDiv.style.alignItems = 'center';
+        refAudioDiv.style.maxWidth = '800px';
+        refAudioDiv.style.marginBottom = '20px';
+        
+        // Dry Reference
+        const dryRefDiv = document.createElement('div');
+        dryRefDiv.style.flex = '1';
+        dryRefDiv.style.textAlign = 'center';
+        dryRefDiv.innerHTML = '<strong>Dry Reference Audio:</strong>';
+        const dryRefAudio = document.createElement('audio');
+        dryRefAudio.controls = true;
+        dryRefAudio.style.width = '100%';
+        const dryRefSource = document.createElement('source');
+        dryRefSource.src = question.dryReference;
+        dryRefSource.type = 'audio/wav';
+        dryRefAudio.appendChild(dryRefSource);
+        dryRefDiv.appendChild(dryRefAudio);
+        
+        // Arrow between Dry and Wet References
+        const arrowDiv = document.createElement('div');
+        arrowDiv.style.flexShrink = '0';
+        arrowDiv.style.padding = '0 20px';
+        arrowDiv.style.fontSize = '30px';
+        arrowDiv.style.textAlign = 'center';
+        arrowDiv.innerHTML = '<p>→</p>';
+
+        // Wet Reference
+        const wetRefDiv = document.createElement('div');
+        wetRefDiv.style.flex = '1';
+        wetRefDiv.style.textAlign = 'center';
+        wetRefDiv.innerHTML = '<strong>Wet Reference Audio:</strong>';
+        const wetRefAudio = document.createElement('audio');
+        wetRefAudio.controls = true;
+        wetRefAudio.style.width = '100%';
+        const wetRefSource = document.createElement('source');
+        wetRefSource.src = question.wetReference;
+        wetRefSource.type = 'audio/wav';
+        wetRefAudio.appendChild(wetRefSource);
+        wetRefDiv.appendChild(wetRefAudio);
+
+        refAudioDiv.appendChild(dryRefDiv);
+        refAudioDiv.appendChild(arrowDiv);
+        refAudioDiv.appendChild(wetRefDiv);
+        innerDiv.appendChild(refAudioDiv);
+        
+        // Dry Target Audio
+        const dryTargetDiv = document.createElement('div');
+        dryTargetDiv.style.display = 'flex';
+        dryTargetDiv.style.justifyContent = 'space-between';
+        dryTargetDiv.style.alignItems = 'center';
+        dryTargetDiv.style.maxWidth = '800px';
+        dryTargetDiv.style.marginBottom = '20px';
+        
+        const dryTargetAudioDiv = document.createElement('div');
+        dryTargetAudioDiv.style.flex = '1';
+        dryTargetAudioDiv.style.textAlign = 'center';
+        dryTargetAudioDiv.innerHTML = '<strong>Dry Target Audio:</strong>';
+        const dryTargetAudio = document.createElement('audio');
+        dryTargetAudio.controls = true;
+        dryTargetAudio.style.width = '100%';
+        const dryTargetSource = document.createElement('source');
+        dryTargetSource.src = question.dryTarget;
+        dryTargetSource.type = 'audio/wav';
+        dryTargetAudio.appendChild(dryTargetSource);
+        dryTargetAudioDiv.appendChild(dryTargetAudio);
+
+        // Arrow between Dry Target and Predicted Wet
+        const targetArrowDiv = document.createElement('div');
+        targetArrowDiv.style.flexShrink = '0';
+        targetArrowDiv.style.padding = '0 20px';
+        targetArrowDiv.style.fontSize = '30px';
+        targetArrowDiv.style.textAlign = 'center';
+        targetArrowDiv.innerHTML = '<p>→</p>';
+
+        // Predicted Wet (Placeholder)
+        const predictedWetDiv = document.createElement('div');
+        predictedWetDiv.style.flex = '1';
+        predictedWetDiv.style.textAlign = 'center';
+        predictedWetDiv.innerHTML = '<p style="font-size:50px;">?</p>';
+
+        dryTargetDiv.appendChild(dryTargetAudioDiv);
+        dryTargetDiv.appendChild(targetArrowDiv);
+        dryTargetDiv.appendChild(predictedWetDiv);
+        innerDiv.appendChild(dryTargetDiv);
+
+        questionDiv.appendChild(innerDiv);
+        
+        // Stimuli Section
+        const stimuliDiv = document.createElement('div');
+        stimuliDiv.style.padding = '10px';
+        stimuliDiv.style.backgroundColor = 'beige';
+
+        question.stimuli.forEach((stimulus, index) => {
+          const stimulusRowDiv = document.createElement('div');
+          stimulusRowDiv.style.display = 'flex';
+          stimulusRowDiv.style.alignItems = 'center';
+          stimulusRowDiv.style.marginBottom = '20px';
+
+          const stimulusAudioDiv = document.createElement('div');
+          stimulusAudioDiv.style.flex = '1';
+
+          const stimulusAudio = document.createElement('audio');
+          stimulusAudio.controls = true;
+          stimulusAudio.style.width = '100%';
+          const stimulusSource = document.createElement('source');
+          stimulusSource.src = stimulus;
+          stimulusSource.type = 'audio/wav';
+          stimulusAudio.appendChild(stimulusSource);
+
+          stimulusAudioDiv.appendChild(stimulusAudio);
+          
+          const sliderDiv = document.createElement('div');
+          sliderDiv.style.flexShrink = '0';
+          sliderDiv.style.marginLeft = '20px';
+          sliderDiv.style.width = '200px';
+
+          const slider = document.createElement('crowd-slider');
+          slider.setAttribute('name', 'audio_sample_' + question.index + '_' + (index + 1) + '_rating');
+          slider.setAttribute('min', '0');
+          slider.setAttribute('max', '100');
+          slider.setAttribute('required', '');
+          slider.setAttribute('pin', '');
+
+          sliderDiv.appendChild(slider);
+          stimulusRowDiv.appendChild(stimulusAudioDiv);
+          stimulusRowDiv.appendChild(sliderDiv);
+
+          stimuliDiv.appendChild(stimulusRowDiv);
+        });
+
+        questionDiv.appendChild(stimuliDiv);
+        container.appendChild(questionDiv);
+      });
+    });
+  </script>
+  
+</crowd-form>
+
+</body>
+</html>
