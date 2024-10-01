@@ -62,27 +62,27 @@ print(afx_learning_single)
 
 afx_learning_multi = split_data["afx_learning_multi"]
 
-afx_learning_single["ref_dry"] = afx_learning_single.apply(
+afx_learning_multi["ref_dry"] = afx_learning_multi.apply(
     lambda row: f"/ssd4/doyo/test_set_v2/multi_effects/vctk1/{row['subtype']}/{row['subtype']}-_-{row['num']}-dry_ref.wav",
     axis=1,
 )
-afx_learning_single["ref_wet"] = afx_learning_single.apply(
+afx_learning_multi["ref_wet"] = afx_learning_multi.apply(
     lambda row: f"/ssd4/doyo/test_set_v2/multi_effects/vctk1/{row['subtype']}/{row['subtype']}-_-{row['num']}-wet_ref.wav",
     axis=1,
 )
-afx_learning_single["tar_dry"] = afx_learning_single.apply(
+afx_learning_multi["tar_dry"] = afx_learning_multi.apply(
     lambda row: f"/ssd4/doyo/test_set_v2/multi_effects/vctk1/{row['subtype']}/{row['subtype']}-_-{row['num']}-dry_tar.wav",
     axis=1,
 )
-afx_learning_single["tar_wet"] = afx_learning_single.apply(
+afx_learning_multi["tar_wet"] = afx_learning_multi.apply(
     lambda row: f"/ssd4/doyo/test_set_v2/multi_effects/vctk1/{row['subtype']}/{row['subtype']}-_-{row['num']}-wet_tar.wav",
     axis=1,
 )
-afx_learning_single["pred1"] = afx_learning_single.apply(
+afx_learning_multi["pred1"] = afx_learning_multi.apply(
     lambda row: f"/ssd4/doyo/infer_forward_final/train_single-eval_multi/vctk1/{row['subtype']}-{row['num']}-3pred.wav",
     axis=1,
 )
-afx_learning_single["pred2"] = afx_learning_single.apply(
+afx_learning_multi["pred2"] = afx_learning_multi.apply(
     lambda row: f"/ssd4/doyo/infer_forward_final/train_multi-eval_multi/vctk1/{row['subtype']}-{row['num']}-3pred.wav",
     axis=1,
 )
@@ -168,3 +168,11 @@ cross_domain["random_param"] = cross_domain.apply(
     axis=1,
 )
 print(cross_domain)
+
+
+merged_df = pd.concat(
+    [afx_learning_single, afx_learning_multi, recording_env, cross_domain]
+)
+
+merged_df.to_csv("mushra_merged.csv", index=False)
+print("Merged data has been saved to 'merged_data.csv'")
