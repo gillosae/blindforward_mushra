@@ -32,4 +32,37 @@ result_df.index = result_df.index.str.replace("_rating", "")
 result_df["idx"] = result_df.index.map(lambda x: int(x.split("_")[0]))
 result_df["querynum"] = result_df.index.map(lambda x: int(x.split("_")[1]))
 result_df = result_df.sort_values(by=["idx", "querynum"])
-print(result_df)
+# print(result_df)
+
+
+whatever = [0, 0, 0]
+
+
+def calculate_mushra(index, querynum):
+    filtered_df = result_df[
+        (result_df["idx"] == index) & (result_df["querynum"] == querynum)
+    ]
+
+    if filtered_df.empty:
+        print(f"No data found for index: {index} and querynum: {querynum}")
+        return
+    mean_score = filtered_df.mean(axis=1)
+    mean_score = mean_score.round(2)
+    min_score = 0  # Anchor (minimum rating)
+    max_score = 100  # Reference (maximum rating)
+
+    normalized_scores = (mean_score - min_score) / (max_score - min_score) * 100
+
+    print(f"{query_df.loc[index, 'subtype']}, querynum {mean_score}")
+    return normalized_scores.values[0]
+
+
+for j in range(26, 42, 1):
+    for i in [1, 2, 3]:
+        whatever[i - 1] += calculate_mushra(j, i)
+    print("----")
+
+
+print(whatever[0] / 16)
+print(whatever[1] / 16)
+print(whatever[2] / 16)
