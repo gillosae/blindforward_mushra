@@ -24,46 +24,45 @@ def plot_mel_spectrograms(indices, titles, columns, name="temp.png"):
 
     fig, axes = plt.subplots(num_rows, num_cols, figsize=(15, num_rows * 3))
 
-    for i, idx in tqdm(enumerate(indices)):
+    for i, idx in enumerate(indices):
         row = df.iloc[idx]
         subtype = row["subtype"]
-        row_title = titles[i]
         for j, col in enumerate(columns):
-            print(j, row[col])
-            if row[col] == "-":
-                continue
             ax = axes[i, j] if num_rows > 1 else axes[j]
             audio_data, sr = load_audio(row[col])
             if audio_data is not None and sr is not None:
-
                 mel_spectrogram = librosa.feature.melspectrogram(
                     y=audio_data, sr=sr, n_mels=128, fmax=8000
                 )
                 mel_spectrogram_db = librosa.power_to_db(mel_spectrogram, ref=np.max)
-
-                librosa.display.specshow(
+                img = librosa.display.specshow(
                     mel_spectrogram_db,
                     cmap="jet",
                     sr=sr,
                     fmax=8000,
                     ax=ax,
                 )
-                ax.set_title(row_title)
             else:
-                ax.set_title(f"{col} (File not found)")
+                ax.text(0.5, 0.5, "File not found", ha="center", va="center")
+                img = None  # No image to colorbar
 
-        fig.text(
-            0.04,
-            (num_rows - i - 0.5) / num_rows,
-            f"{subtype}",
-            va="center",
-            ha="right",
-            fontsize=12,
-            color="black",
-            weight="bold",
-        )
+            # Set column titles only on the first row
+            if i == 0:
+                ax.set_title(titles[j])
 
-    plt.tight_layout(rect=[0.1, 0, 1, 1])
+            # Set row labels on the first column
+            if j == 0:
+                ax.set_ylabel(
+                    subtype,
+                    rotation="vertical",
+                    va="center",
+                    ha="right",
+                    labelpad=20,
+                    fontsize=12,
+                    color="black",
+                )
+
+    plt.tight_layout(rect=[0.1, 0, 1, 1])  # Adjust layout to fit the row labels
     plt.savefig(name, bbox_inches="tight")
 
 
